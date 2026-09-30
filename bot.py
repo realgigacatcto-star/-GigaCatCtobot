@@ -216,7 +216,7 @@ def main() -> None:
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_cmd))
     app.add_handler(MessageHandler(filters.PHOTO, on_photo))
-    app.add_handler(MessageHandler(filters.TEXT & \~filters.COMMAND, on_text))
+    app.add_handler(MessageHandler(filters.TEXT, on_text))
     log.info("GigaCat bot polling")
     app.run_polling(allowed_updates=Update.ALL_TYPES)
 
