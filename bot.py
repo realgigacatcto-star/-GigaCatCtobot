@@ -180,14 +180,16 @@ async def on_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         caption="GIGACAT ASCENDED\nSame cat. Different league.",
     )
 
-
 async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not update.message or not update.message.text:
+        return
+    if update.effective_chat and update.effective_chat.type != "private":
         return
     if "how" in update.message.text.lower():
         await help_cmd(update, context)
         return
     await update.message.reply_text("Send a photo of your cat to begin.")
+
 
 
 def start_health_server() -> None:
